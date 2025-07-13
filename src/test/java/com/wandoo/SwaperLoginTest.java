@@ -1,5 +1,6 @@
 package com.wandoo;
 
+import com.wandoo.testutils.UserData;
 import com.wandoo.testutils.WandooAssert;
 import io.restassured.RestAssured;
 import io.restassured.http.Cookies;
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.*;
 
 import java.lang.reflect.Method;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static io.restassured.RestAssured.given;
@@ -48,11 +48,7 @@ public class SwaperLoginTest extends BaseTest {
             return;
         }
         String registerUri = "/rest/public/register";
-
-        DateTimeFormatter timeStampFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-        String timestamp = LocalDateTime.now().format(timeStampFormatter);
-        String username = String.format("testuser%s@qa.com", timestamp);
-        String password = getProp("password");
+        UserData userData = new UserData();
         String registerData = String.format("{\n" +
                 "  \"email\": \"%s\",\n" +
                 "  \"incomingUrl\": false,\n" +
@@ -65,7 +61,7 @@ public class SwaperLoginTest extends BaseTest {
                 "  \"referrerUrl\": false,\n" +
                 "  \"sendEmailNotifications\": false,\n" +
                 "  \"invitationFromUuid\": null" +
-                "}", username, password, timestamp);
+                "}", userData.getEmail(), userData.getPassword(), userData.getPhone());
 
         Response registerResponse1 = given()
                 .contentType("application/vnd.com.swaper.v1+json")
@@ -87,7 +83,7 @@ public class SwaperLoginTest extends BaseTest {
                 , registerResponse1.path("accountBalance"));
         log.info(successInfo);
         testLogout(testInfo);
-        doLogin(username, password);
+        doLogin(userData.getEmail(), userData.getPassword());
     }
 
     @Test

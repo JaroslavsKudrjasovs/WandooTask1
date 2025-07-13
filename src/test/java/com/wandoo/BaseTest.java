@@ -1,6 +1,5 @@
 package com.wandoo;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,8 +10,7 @@ public abstract class BaseTest {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     protected static Properties testProps;
 
-    @BeforeAll
-    public static void loadTestProperties() {
+    public BaseTest() {
         testProps = new Properties();
         try (InputStream input = BaseTest.class
                 .getClassLoader()
