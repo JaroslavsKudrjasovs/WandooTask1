@@ -14,4 +14,5 @@ or in terminal type 'mvn clean test' and press 'Enter'
 
 to run WEB tests, right click
 com.wandoo.web.selenium.BalanceCheckTest
-and select Run 'SwaperLoginTest'
+and select Run 'BalanceCheckTest'
+or right click 'smokeTests.xml' and select Run 'smokeTests.xml'
