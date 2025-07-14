@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class DashboardPage {
+public class DashboardPage extends ParentPage<DashboardPage>{
 
     private final SelenideElement balanceElement = $("a.menu-item#add-funds");
 

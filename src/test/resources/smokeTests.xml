@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Swaper Test Suite">
+    <test name="Swaper Functional Tests">
+        <classes>
+            <class name="com.wandoo.web.selenium.BalanceCheckTest"/>
+        </classes>
+    </test>
+</suite>

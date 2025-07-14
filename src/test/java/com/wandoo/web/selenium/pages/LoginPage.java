@@ -2,15 +2,13 @@ package com.wandoo.web.selenium.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
-public class LoginPage extends ParentPge {
+public class LoginPage extends ParentPage<LoginPage> {
 
-    public LoginPage openPage() {
-        open("https://swaper.com/en/login");
-        SelenideElement acceptAllButton = $("button#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
-        acceptAllButton.click();
-        return this;
+    public LoginPage() {
+        relativeUrl = "/en/login";
     }
 
     public void login(String email, String password) {

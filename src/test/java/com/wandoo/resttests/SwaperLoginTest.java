@@ -1,5 +1,6 @@
-package com.wandoo;
+package com.wandoo.resttests;
 
+import com.wandoo.BaseTest;
 import com.wandoo.testutils.UserData;
 import com.wandoo.testutils.WandooAssert;
 import io.restassured.RestAssured;
@@ -29,7 +30,7 @@ public class SwaperLoginTest extends BaseTest {
     @Test
     @Order(1)
     public void testLoginToSwaper() {
-        Response loginResponse = doLogin(getProp("username"), getProp("password"));
+        Response loginResponse = doLogin(BaseTest.getProp("username"), BaseTest.getProp("password"));
 
         WandooAssert.assertEquals(log, 200, loginResponse.statusCode()
                 , "Checking response status");
